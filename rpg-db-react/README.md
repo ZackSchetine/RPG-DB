@@ -1,3 +1,8 @@
+# Technologies used:
+
+## React.js - find [here](https://reactjs.org/docs/getting-started.html)
+## Material UI - find [here](https://mui.com/material-ui/getting-started/overview/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
