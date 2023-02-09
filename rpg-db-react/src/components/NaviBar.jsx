@@ -1,0 +1,109 @@
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+
+import MenuButtons from './MenuButtons';
+import './index.css';
+import EditionButton from './EditionButton';
+
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+function NaviBar(props) {
+
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  return (
+
+    <AppBar position="static" color='inherit' sx={{ boxShadow: 'none', borderBottom: '#e9edf5 solid 1px' }}>
+      <Container maxWidth="100%" sx={{ bgcolor: 'white', padding: '0 !important' }}>
+        <Toolbar disableGutters sx={{ margin: '0', p: '0 12px', bgcolor: 'white', height: '80px' }}>
+
+          {/* Título 1 'Logo' */}
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              ml: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'sans-serif',
+              fontWeight: 500,
+              fontSize: '1.75rem',
+              textDecoration: 'none',
+              color: '#FFA07A',
+            }}
+          >
+            RPG
+            <div className='db-text'>
+              DB
+            </div>
+
+          </Typography>
+
+
+          {/* Inclusão do botão seletor de edição */}
+
+          <EditionButton itensList={props.itensList}/>
+
+          <div className='buttons-container'>
+            <MenuButtons itens={['summary', 'characters', 'bestiary', 'map', 'rules']} activeTab={props.activeTab}/>
+          </div>
+
+          {/*Menu conta do usuário*/}
+
+          <Box sx={{ margin: '0 30px' }}>
+            <Tooltip title="User settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+
+        </Toolbar>
+      </Container>
+    </AppBar>
+
+
+  );
+}
+export default NaviBar;
