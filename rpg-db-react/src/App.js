@@ -1,12 +1,22 @@
 import './App.css';
-import Home from './screens/Home'
+import Home from './screens/Home';
+import Bestiary from "./screens/Bestiary";
+import NaviBar from './components/NaviBar';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 
 function App() {
   return (
-    <div className="App">
-      <Home/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<NaviBar />}>
+          {/* <Route index element={<Home />} />   */}
+          <Route index element={ <Navigate to="/summary" /> } />
+          <Route index path="/summary" element={<Home />} />
+          <Route path="bestiary" element={<Bestiary />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

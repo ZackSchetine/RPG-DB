@@ -5,7 +5,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { useNavigate } from "react-router-dom";
 
 import './generalStyle.css';
 
@@ -16,7 +16,6 @@ export default function MenuButtons(props) {
 
   const handleChange = (event, newAlignment) => {
     if (newAlignment !== alignment && newAlignment !== null) {
-      //console.log("algn: " + alignment + " newAlgn: " + newAlignment)
       setAlignment(newAlignment);
     }
   };
@@ -39,10 +38,11 @@ export default function MenuButtons(props) {
     }
   });
 
+  const navigate = useNavigate();
 
-  function selectButton() {
-
-    console.log(alignment);
+  function selectButton(e, route) {
+    e.nativeEvent.stopImmediatePropagation();
+    navigate(route);
   }
 
   return (
@@ -61,11 +61,13 @@ export default function MenuButtons(props) {
           {itens.map((itens) => (
             <ToggleButton
               disableRipple
-              onChange={selectButton}
-              key={itens}
-              value={itens}
+              onClick={(e) => {
+                selectButton(e, itens.route);
+              }}
+              key={itens.name}
+              value={itens.name}
               className='navi-buttons'>
-              {itens}
+              {itens.name}
             </ToggleButton>
           ))}
 

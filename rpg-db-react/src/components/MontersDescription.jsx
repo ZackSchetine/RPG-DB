@@ -21,9 +21,9 @@ export default function MonsterDescription(props) {
                 <div className='monster-desc-cont1'>
                     <img className='monster-img' src={props.monster.image} alt={props.alt}></img>
                     <div className='monster-text'>
-                        <text>
+                        <div>
                             {props.monster.description}
-                        </text>
+                        </div>
                     </div>
                 </div>
 
@@ -31,8 +31,8 @@ export default function MonsterDescription(props) {
                     <div className='traits'>
                         <div className='properties'>
                             {props.monster.properties.map((properties) => (
-                                <div className='attribute-container'>
-                                    <div className='properties-name'>{properties.name}:</div>
+                                <div className='attribute-container' key={properties.name}>
+                                    <div className='properties-name' >{properties.name}:</div>
                                     <div className='properties-value'>{properties.value}</div>
                                 </div>
                             ))}
@@ -40,7 +40,7 @@ export default function MonsterDescription(props) {
 
                         <div className='attributes'>
                             {props.monster.attributes.map((attributes) => (
-                                <div className='attribute-container'>
+                                <div className='attribute-container' key={attributes.name}>
                                     <div className='attribute-name'>{attributes.name}:</div>
                                     <div className='attribute-value'>{attributes.value}</div>
                                     <div className='attribute-mod'>
@@ -53,15 +53,15 @@ export default function MonsterDescription(props) {
 
                     <div className='monster-skills'>
                         {props.monster.skills.map((skills) => (
-                            <span>
-                                <h3 className='skill-title'>{skills.typeName}</h3>
+                            <div key={skills.typeName}>
+                                <h3 className='skill-title' >{skills.typeName}</h3>
                                 {skills.skillList.map((skillList) => (
-                                    <div className='monster-skills-cont'>
+                                    <div className='monster-skills-cont' key={skillList.name}>
                                         <div className='skill-name'>{skillList.name}:</div>
                                         <div>{skillList.value}</div>
                                     </div>
                                 ))}
-                            </span>
+                            </div>
                         ))}
                     </div>
                 </div>
