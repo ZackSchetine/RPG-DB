@@ -1,0 +1,128 @@
+.buttons-container {
+    margin-left: auto;
+    background-color: #fff;
+    display: flex;
+}
+
+.navi-buttons {
+    border: none;
+    color: #47525E;
+    text-transform: capitalize;
+    margin: 0 5px;
+    font-size: 18px;
+    width: 150px;
+}
+
+.db-text {
+    color: #F95F62;
+}
+
+.title-img-container {
+    width: 100%;
+    height: 37vh;
+    margin-top: 40px;
+}
+
+.title-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.summary-text {
+    margin: 90px 20px 0 80px;
+    text-align: justify;
+    font-size: 21px;
+}
+
+.monster-description {
+    margin: 0 55px 0 50px;
+    text-align: justify;
+    font-size: 21px;
+}
+
+.monster-desc-cont1 {
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+
+.monster-desc-cont2 {
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+
+.monster-img {
+    width: 100%;
+}
+
+.monster-text {
+    padding-left: 27px;
+    white-space: pre-line;
+}
+
+.monster-skills {
+    padding-left: 27px;
+}
+
+.monster-skills-cont {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.traits {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin-top: 10px;
+}
+
+.properties-name {
+    display: inline-block;
+    font-weight: 600;
+    color: #F95F62;
+    margin-right: 10px;
+}
+
+.properties-value {
+    display: inline-block;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.attribute-name {
+    display: inline-block;
+    font-weight: 600;
+    color: #F95F62;
+    margin-right: 10px;
+    width: 50px;
+}
+
+.attribute-value {
+    display: inline-block;
+    margin-right: 10px;
+    width: 20px;
+}
+
+.attribute-mod {
+    display: inline-block;
+}
+
+.attribute-mod-value {
+    display: inline-block;
+    text-align: center;
+    width: 40px;
+}
+
+.skill-title {
+    color: #F95F62;
+}
+
+.skill-name {
+    display: inline-block;
+    font-weight: 600;
+    color: #F95F62;
+    margin-right: 10px;
+}
+
+.attribute-container {
+    margin-top: 15px;
+}

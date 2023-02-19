@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
-import './index.css';
+import './generalStyle.css';
 
 export default function MenuButtons(props) {
   const [alignment, setAlignment] = React.useState(props.activeTab);
@@ -58,7 +58,6 @@ export default function MenuButtons(props) {
           sx={{ margin: 0, height: '80px' }}
         >
 
-
           {itens.map((itens) => (
             <ToggleButton
               disableRipple
@@ -69,7 +68,6 @@ export default function MenuButtons(props) {
               {itens}
             </ToggleButton>
           ))}
-
 
         </ToggleButtonGroup>
 

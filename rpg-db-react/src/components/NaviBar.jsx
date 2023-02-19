@@ -11,7 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
 import MenuButtons from './MenuButtons';
-import './index.css';
+import './generalStyle.css';
 import EditionButton from './EditionButton';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -41,7 +41,7 @@ function NaviBar(props) {
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              mr: 7,
               ml: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'sans-serif',
@@ -64,7 +64,7 @@ function NaviBar(props) {
           <EditionButton itensList={props.itensList}/>
 
           <div className='buttons-container'>
-            <MenuButtons itens={['summary', 'characters', 'bestiary', 'map', 'rules']} activeTab={props.activeTab}/>
+            <MenuButtons itens={['resumo', 'personagens', 'bestiário', 'mapa', 'regras']} activeTab={props.activeTab}/>
           </div>
 
           {/*Menu conta do usuário*/}
