@@ -10,9 +10,21 @@ import { useNavigate } from "react-router-dom";
 import './generalStyle.css';
 
 export default function MenuButtons(props) {
-  const [alignment, setAlignment] = React.useState(props.activeTab);
-
   const itens = props.itens;
+
+  const getCurrentPage = (itens) => {
+    let defaultPage = itens[0].name;
+    itens.every(function (page) {
+      if (page.route === window.location.pathname) {
+        defaultPage = page.name;
+        return false;
+      }
+      else return true;
+    })
+    return defaultPage;
+  };
+
+  const [alignment, setAlignment] = React.useState(getCurrentPage(itens));
 
   const handleChange = (event, newAlignment) => {
     if (newAlignment !== alignment && newAlignment !== null) {
