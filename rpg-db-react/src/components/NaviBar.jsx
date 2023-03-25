@@ -14,18 +14,10 @@ import MenuButtons from './MenuButtons';
 import './generalStyle.css';
 import EditionButton from './EditionButton';
 
-import { dropDownRequest } from '../api/GeneralRequests'
 import { Outlet } from "react-router-dom";
 
-const itensList = dropDownRequest();
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const pages = [
-  { name: 'resumo', route: '/summary' },
-  { name: 'personagens', route: '/characters' },
-  { name: 'bestiário', route: '/bestiary' },
-  { name: 'mapa', route: '/map' },
-  { name: 'regras', route: '/rules' }
-];
+
 
 function NaviBar(props) {
 
@@ -72,10 +64,10 @@ function NaviBar(props) {
 
             {/* Inclusão do botão seletor de edição */}
 
-            <EditionButton itensList={itensList} />
+            <EditionButton startPosition={props.startPosition} itensList={props.itensList} pages={props.pages} />
 
             <div className='buttons-container'>
-              <MenuButtons itens={pages} />
+              <MenuButtons itens={props.pages} />
             </div>
 
             {/*Menu conta do usuário*/}

@@ -11,8 +11,6 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import Autocomplete from '@mui/material/Autocomplete';
 
 
-
-
 export default function SearchFilter(props) {
     const filterMenu = [
         { title: 'Nome', type: 'input', value: '' },
@@ -94,6 +92,14 @@ export default function SearchFilter(props) {
             }
         }
     });
+
+    const filterMonsterClick = () => {
+        console.log("click");
+    }
+
+    const randomMonsterClick = () => {
+        console.log("click");
+    }
 
     const createForm = (filterMenu) => {
         switch (filterMenu.type) {
@@ -180,7 +186,7 @@ export default function SearchFilter(props) {
                         <div className='filter-label'>{filterMenu.title}:</div>
                         <div className='filter-content'>
                             <div className='filter-content-container'>
-                                <Autocomplete  
+                                <Autocomplete
                                     size='small'
                                     id="combo-box-demo"
                                     options={filterMenu.value}
@@ -192,7 +198,6 @@ export default function SearchFilter(props) {
                                         <TextField
                                             {...params}
                                             placeholder="Idioma" />}
-
                                 />
                             </div>
                         </div>
@@ -224,8 +229,8 @@ export default function SearchFilter(props) {
                             {filterMenu.map((form) => (createForm(form)))}
                         </div>
                         <div className='filter-buttons-container'>
-                            <Button disableRipple sx={{ color: 'white', bgcolor: '#D1D1D1', }}>Filtrar</Button>
-                            <Button disableRipple sx={{ color: 'white', bgcolor: '#D1D1D1', marginLeft: '30px' }}>Aleatório</Button>
+                            <Button disableRipple sx={{ color: 'white', bgcolor: '#D1D1D1', }} onClick={filterMonsterClick}>Filtrar</Button>
+                            <Button disableRipple sx={{ color: 'white', bgcolor: '#D1D1D1', marginLeft: '30px' }} onClick={randomMonsterClick}>Aleatório</Button>
                         </div>
                     </div>
                 </ThemeProvider>

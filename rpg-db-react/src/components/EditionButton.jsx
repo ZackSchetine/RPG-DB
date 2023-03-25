@@ -8,41 +8,49 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
+import { SystemContext } from './SystemContext';
+import { useNavigate } from "react-router-dom";
 
 
 export default function EditionButton(props) {
+  const navigate = useNavigate();
+
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(4);
+  const [selectedIndex, setSelectedIndex] = React.useState(props.startPosition);
+  const [, setSystemContext] = React.useContext(SystemContext);
 
   const options = props.itensList;
 
-  // const handleClick = () => {
-  //   console.info(`You clicked ${options[selectedIndex]}`);
-  // };
+  React.useEffect(() => {
+    setSystemContext(options[props.startPosition]);
+  }, [options, props.startPosition, setSystemContext]);
 
 
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
     setOpen(false);
+    // Global var update
+    setSystemContext(options[index]);
+
+    navigate(props.pages[0].route);
   };
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
+
   };
 
   const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
   return (
     <React.Fragment>
       <ButtonGroup variant="text" ref={anchorRef} aria-label="split button" sx={{ marginLeft: '20px', bgcolor: '#F95F62' }}>
-        {/* <Button onClick={handleClick}>{options[selectedIndex]}</Button>  */}
         <Button
           size="small"
           aria-controls={open ? 'split-button-menu' : undefined}

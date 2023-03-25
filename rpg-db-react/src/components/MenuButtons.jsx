@@ -7,22 +7,31 @@ import IconButton from '@mui/material/IconButton';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
 
+import { SystemContext } from './SystemContext';
+
 import './generalStyle.css';
 
 export default function MenuButtons(props) {
+
+  const [systemContext,] = React.useContext(SystemContext);
+
   const itens = props.itens;
 
   const getCurrentPage = (itens) => {
-    let defaultPage = itens[0].name;
+    let currentPageName = itens[0].name;
     itens.every(function (page) {
       if (page.route === window.location.pathname) {
-        defaultPage = page.name;
+        currentPageName = page.name;
         return false;
       }
       else return true;
     })
-    return defaultPage;
+    return currentPageName;
   };
+
+  React.useEffect(() => {
+    setAlignment(getCurrentPage(itens));
+  }, [itens, systemContext]);
 
   const [alignment, setAlignment] = React.useState(getCurrentPage(itens));
 
