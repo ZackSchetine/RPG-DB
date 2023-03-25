@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.css';
 import Home from './screens/Home';
 import Bestiary from "./screens/Bestiary";
-import NaviBar from './components/NaviBar';
+import NavBar from './components/NavBar';
 import MonsterFilter from './screens/MonsterFilter';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { dropDownRequest } from './api/GeneralRequests'
@@ -25,7 +25,7 @@ function App() {
     <SystemContext.Provider value={[systemContext, setSystemContext]}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<NaviBar pages={pages} itensList={itensList} startPosition={4} />}>
+            <Route path="/" element={<NavBar pages={pages} itensList={itensList} startPosition={4} />}>
               <Route index element={<Navigate to="/summary" />} />
               <Route index path="/summary" element={<Home />} />
               <Route path="bestiary" element={<Bestiary />} />

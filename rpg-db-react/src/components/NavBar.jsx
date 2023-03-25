@@ -19,7 +19,7 @@ import { Outlet } from "react-router-dom";
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
-function NaviBar(props) {
+function NavBar(props) {
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -110,4 +110,4 @@ function NaviBar(props) {
     </>
   );
 }
-export default NaviBar;
+export default NavBar;
