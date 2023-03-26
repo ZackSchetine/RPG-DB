@@ -23,7 +23,7 @@ function App() {
 
   return (
     <SystemContext.Provider value={[systemContext, setSystemContext]}>
-        <BrowserRouter>
+        <BrowserRouter basename='/RPG-DB'>
           <Routes>
             <Route path="/" element={<NavBar pages={pages} itensList={itensList} startPosition={4} />}>
               <Route index element={<Navigate to="/summary" />} />

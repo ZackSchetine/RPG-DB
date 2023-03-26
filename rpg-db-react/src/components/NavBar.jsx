@@ -43,7 +43,7 @@ function NavBar(props) {
               variant="h6"
               noWrap
               component="a"
-              href="/summary"
+              href="/RPG-DB/summary"
               sx={{
                 mr: 7,
                 ml: 2,
