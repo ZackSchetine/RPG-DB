@@ -5,6 +5,9 @@ import { monsterRequest } from '../api/BestiaryRequests'
 
 const monster = monsterRequest(1);
 
+if (monster == null){
+  console.log("Monstro com ID inválido\nImplementar Redirect");
+}
 
 export default function Bestiary() {
   return (

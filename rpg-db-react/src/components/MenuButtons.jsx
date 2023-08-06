@@ -20,7 +20,9 @@ export default function MenuButtons(props) {
   const getCurrentPage = (itens) => {
     let currentPageName = itens[0].name;
     itens.every(function (page) {
-      if (page.route === window.location.pathname) {
+      //console.log(page.route + " | /" + window.location.pathname.split("/")[2])
+
+      if (page.route === "/" + window.location.pathname.split("/")[2]) {
         currentPageName = page.name;
         return false;
       }

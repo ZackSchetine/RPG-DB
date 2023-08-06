@@ -168,3 +168,41 @@
 .filter-buttons-container {
     margin-top: 30px;
 }
+
+.img-test {
+    max-height: 100%;
+    border: #47525E solid 1px;
+}
+
+.result-list {
+    padding-left: 100px;
+}
+
+.result-list-text {
+    font-size: 18px;
+    height: 100%;
+    width: 100%;
+    padding-left: 50px;
+}
+
+.result-list-monster-name {
+    width: 100%;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #F95F62;
+}
+
+.result-list-misc {
+    padding-top: 5px;
+    color: #47525E;
+}
+
+.result-list-container {
+    display: grid;
+    grid-template-columns: 20% 20% 60%;
+}
+
+.container1 {
+    width: 100%;
+}

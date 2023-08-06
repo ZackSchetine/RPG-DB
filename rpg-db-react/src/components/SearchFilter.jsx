@@ -7,13 +7,16 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { StyledEngineProvider } from '@mui/material/styles';
+import { monsterFilter } from '../api/BestiaryRequests'
+import ResultList from '../components/ResultList';
 
 import Autocomplete from '@mui/material/Autocomplete';
 
 
 export default function SearchFilter(props) {
-    const filterMenu = [
-        { title: 'Nome', type: 'input', value: '' },
+
+    const [filterMenu, setFilterMenu] = React.useState([
+        { title: 'Nome', type: 'input', value: '', selectedValue: '' },
         {
             title: 'Tipo', type: 'buttonGroup',
             value: ['aberração', 'besta', 'celestial', 'constructo', 'corruptor', 'dragão', 'elemental', 'fada', 'gigante', 'humanóide', 'monstruosidade', 'morto-vivo']
@@ -50,9 +53,10 @@ export default function SearchFilter(props) {
             title: 'Sentidos', type: 'buttonGroup',
             value: ['visão no escuro', 'percepção às cegas', 'visão verdadeira', 'sentido sísmico']
         }
-    ]
+    ]);
 
     const [alignment, setAlignment] = React.useState();
+    const [results, setResults] = React.useState([]);
 
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
@@ -93,13 +97,29 @@ export default function SearchFilter(props) {
         }
     });
 
-    const filterMonsterClick = () => {
+    const filterClick = () => {
+        var filter = [];
+        console.log(filterMenu);
+        setResults(monsterFilter(filter, '5.0'));
+    }
+
+    const randomClick = () => {
         console.log("click");
     }
 
-    const randomMonsterClick = () => {
-        console.log("click");
-    }
+    const handleBlur = (event, formName) => {
+        const formValue = event.target.value;
+        console.log('Campo perdeu o foco. Valor atual:', formValue);
+        console.log('Outro valor:', formName);
+        // Aqui você pode fazer outras ações, utilizando os valores recebidos.
+
+        filterMenu.forEach(filterItem => {
+            //console.log(filterItem)
+            if (filterItem.title === formName) {
+                filterItem.selectedValue = formValue;
+            }
+        });
+    };
 
     const createForm = (filterMenu) => {
         switch (filterMenu.type) {
@@ -114,6 +134,7 @@ export default function SearchFilter(props) {
                                     placeholder="Required"
                                     type='text'
                                     sx={{ width: '60%' }}
+                                    onBlur={(e) => handleBlur(e, filterMenu.title)}
                                 />
                             </div>
                         </div>
@@ -129,7 +150,8 @@ export default function SearchFilter(props) {
                                 <ToggleButtonGroup
                                     value={alignment}
                                     variant="outlined" aria-label="outlined primary button group"
-                                    onChange={handleChange}>
+                                    onChange={handleChange}
+                                    onBlur={(e) => handleBlur(e, filterMenu.title)}>
                                     {filterMenu.value.map((value) => (
                                         <ToggleButton
                                             key={value}
@@ -162,6 +184,7 @@ export default function SearchFilter(props) {
                                     InputLabelProps={{
                                         shrink: false,
                                     }}
+
                                 />
 
                                 <div className='divider'></div>
@@ -174,6 +197,7 @@ export default function SearchFilter(props) {
                                     InputLabelProps={{
                                         shrink: false,
                                     }}
+
                                 />
                             </div>
                         </div>
@@ -198,6 +222,7 @@ export default function SearchFilter(props) {
                                         <TextField
                                             {...params}
                                             placeholder="Idioma" />}
+                                    onBlur={(e) => handleBlur(e, filterMenu.title)}
                                 />
                             </div>
                         </div>
@@ -229,8 +254,11 @@ export default function SearchFilter(props) {
                             {filterMenu.map((form) => (createForm(form)))}
                         </div>
                         <div className='filter-buttons-container'>
-                            <Button disableRipple sx={{ color: 'white', bgcolor: '#D1D1D1', }} onClick={filterMonsterClick}>Filtrar</Button>
-                            <Button disableRipple sx={{ color: 'white', bgcolor: '#D1D1D1', marginLeft: '30px' }} onClick={randomMonsterClick}>Aleatório</Button>
+                            <Button disableRipple sx={{ color: 'white', bgcolor: '#D1D1D1', }} onClick={filterClick}>Filtrar</Button>
+                            <Button disableRipple sx={{ color: 'white', bgcolor: '#D1D1D1', marginLeft: '30px' }} onClick={randomClick}>Aleatório</Button>
+                        </div>
+                        <div>
+                            <ResultList results={results} />
                         </div>
                     </div>
                 </ThemeProvider>
