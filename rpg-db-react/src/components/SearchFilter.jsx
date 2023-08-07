@@ -18,45 +18,47 @@ export default function SearchFilter(props) {
     const [filterMenu, setFilterMenu] = React.useState([
         { title: 'Nome', type: 'input', value: '', selectedValue: '' },
         {
-            title: 'Tipo', type: 'buttonGroup',
+            title: 'Tipo', type: 'buttonGroup', selectedValue: '',
             value: ['aberração', 'besta', 'celestial', 'constructo', 'corruptor', 'dragão', 'elemental', 'fada', 'gigante', 'humanóide', 'monstruosidade', 'morto-vivo']
         },
         {
-            title: 'Tamanho', type: 'buttonGroup',
+            title: 'Tamanho', type: 'buttonGroup', selectedValue: '',
             value: ['miúdo', 'pequeno', 'médio', 'grande', 'enorme', 'imenso']
         },
         {
-            title: 'Alinhamento', type: 'buttonGroup',
+            title: 'Alinhamento', type: 'buttonGroup', selectedValue: '',
             value: ['leal / bom', 'neutro / bom', 'caótico / bom', 'leal / neutro', 'neutro', 'caótico / neutro', 'leal / mal', 'neutro / mal', 'caótico / mal']
         },
         {
-            title: 'Pontos de Vida', type: 'rangeInput',
+            title: 'Pontos de Vida', type: 'rangeInput', selectedValue: '',
             minValue: 'mínimo', maxValue: 'máximo'
         },
         {
-            title: 'Classe de Armadura', type: 'rangeInput',
+            title: 'Classe de Armadura', type: 'rangeInput', selectedValue: '',
             minValue: 'mínimo', maxValue: 'máximo'
         },
         {
-            title: 'Deslocamento', type: 'rangeInput',
+            title: 'Deslocamento', type: 'rangeInput', selectedValue: '',
             minValue: 'mínimo', maxValue: 'máximo'
         },
         {
-            title: 'Nível de Desafio', type: 'rangeInput',
+            title: 'Nível de Desafio', type: 'rangeInput', selectedValue: '',
             minValue: 'mínimo', maxValue: 'máximo'
         },
         {
-            title: 'Idiomas', type: 'dropDown',
+            title: 'Idiomas', type: 'dropDown', selectedValue: '',
             value: ['comum', 'anão', 'élfico', 'gigante', 'gnômico', 'goblin', 'halfling', 'orc', 'abissal', 'celestial', 'dialeto subterrâneo', 'dracônico', 'infernal', 'primordial', 'silvestre', 'subcomum']
         },
         {
-            title: 'Sentidos', type: 'buttonGroup',
+            title: 'Sentidos', type: 'buttonGroup', selectedValue: '',
             value: ['visão no escuro', 'percepção às cegas', 'visão verdadeira', 'sentido sísmico']
         }
     ]);
 
     const [alignment, setAlignment] = React.useState();
     const [results, setResults] = React.useState([]);
+
+    var filledFilter = [];
 
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
@@ -98,8 +100,8 @@ export default function SearchFilter(props) {
     });
 
     const filterClick = () => {
-        var filter = [];
-        console.log(filterMenu);
+        var filter = filledFilter;
+        console.log(filter);
         setResults(monsterFilter(filter, '5.0'));
     }
 
@@ -113,12 +115,22 @@ export default function SearchFilter(props) {
         console.log('Outro valor:', formName);
         // Aqui você pode fazer outras ações, utilizando os valores recebidos.
 
-        filterMenu.forEach(filterItem => {
-            //console.log(filterItem)
-            if (filterItem.title === formName) {
-                filterItem.selectedValue = formValue;
+        var newFilterItem = { name: formName, value: formValue };
+
+        var isFilledFilterUpdated = false;
+
+        filledFilter.forEach(filter => {
+            if (filter.name === newFilterItem.name) {
+                filter.value = formValue;
+                isFilledFilterUpdated = true;
             }
         });
+
+        if (!isFilledFilterUpdated) {
+            filledFilter.push(newFilterItem);
+        }
+
+        // setFilledFilter((filledFilter) => [...filledFilter, newFilterItem]);
     };
 
     const createForm = (filterMenu) => {

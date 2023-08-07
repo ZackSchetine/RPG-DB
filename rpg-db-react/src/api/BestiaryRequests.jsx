@@ -72,8 +72,7 @@ function filterByProps(monster, filter) {
     var matchedMonster = false;
 
     monster.properties.forEach(propertie => {
-        
-        if (propertie.name === filter.name && propertie.value === filter.value) {
+        if (propertie.name.toUpperCase() === filter.name.toUpperCase() && propertie.value.toUpperCase() === filter.value.toUpperCase()) {
             matchedMonster = true;
         }
     });
@@ -85,11 +84,10 @@ export function monsterFilter(filters, system) {
     var filteredMonsters = monsterList.find(monsterBySystem => monsterBySystem.system === system).monsters
 
     filters.forEach(filter => {
-        console.log(filter)
         if (filter.value !== '') {
             filteredMonsters = filteredMonsters.filter(monster => filterByProps(monster, filter));
         }
     });
-
+    console.log(filteredMonsters);
     return filteredMonsters;
 }
