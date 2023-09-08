@@ -51,14 +51,14 @@ const monsterList = [{
                 }],
             }
         ]
-    }]
+    }],
 }]
 
 export function monsterRequest(id) {
     var monster;
 
     monsterList.forEach(list => {
-        monster = list.monsters.find(monster => monster.id === id)
+        monster = list.monsters.find(monster => monster.id == id)
 
         if (monster !== null) {
             return monster;

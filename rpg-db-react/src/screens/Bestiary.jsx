@@ -2,14 +2,19 @@ import * as React from 'react';
 import Breadcrumb from '../components/BreadCrumb'
 import MonsterDescription from '../components/MontersDescription';
 import { monsterRequest } from '../api/BestiaryRequests'
+import { useParams } from "react-router-dom";
 
-const monster = monsterRequest(1);
-
-if (monster == null){
-  console.log("Monstro com ID inválido\nImplementar Redirect");
-}
 
 export default function Bestiary() {
+
+  const { id } = useParams();
+
+  const monster = monsterRequest(id);
+
+  if (monster == null) {
+    console.log("Monstro com ID inválido\nImplementar Redirect");
+  }
+
   return (
     <div>
       <Breadcrumb pages={[

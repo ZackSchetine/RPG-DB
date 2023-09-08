@@ -99,10 +99,14 @@ export default function SearchFilter(props) {
         }
     });
 
+    const [showItem, setShowItem] = React.useState(false);
+
     const filterClick = () => {
         var filter = filledFilter;
-        console.log(filter);
+        //console.log(filter);
         setResults(monsterFilter(filter, '5.0'));
+
+        setShowItem(!showItem);
     }
 
     const randomClick = () => {
@@ -270,7 +274,7 @@ export default function SearchFilter(props) {
                             <Button disableRipple sx={{ color: 'white', bgcolor: '#D1D1D1', marginLeft: '30px' }} onClick={randomClick}>Aleatório</Button>
                         </div>
                         <div>
-                            <ResultList results={results} />
+                        {showItem && <ResultList results={results} />}
                         </div>
                     </div>
                 </ThemeProvider>
