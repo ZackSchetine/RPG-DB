@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/RPG-DB/static/css/main.1a5139ff.css",
-    "main.js": "/RPG-DB/static/js/main.b76b28bb.js",
+    "main.js": "/RPG-DB/static/js/main.7fd5b822.js",
     "static/js/787.cb1c71f6.chunk.js": "/RPG-DB/static/js/787.cb1c71f6.chunk.js",
     "static/media/Lato-Regular.ttf": "/RPG-DB/static/media/Lato-Regular.9d883d540ee2b4de8024.ttf",
     "index.html": "/RPG-DB/index.html",
     "main.1a5139ff.css.map": "/RPG-DB/static/css/main.1a5139ff.css.map",
-    "main.b76b28bb.js.map": "/RPG-DB/static/js/main.b76b28bb.js.map",
+    "main.7fd5b822.js.map": "/RPG-DB/static/js/main.7fd5b822.js.map",
     "787.cb1c71f6.chunk.js.map": "/RPG-DB/static/js/787.cb1c71f6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1a5139ff.css",
-    "static/js/main.b76b28bb.js"
+    "static/js/main.7fd5b822.js"
   ]
 }
